@@ -15,7 +15,7 @@ RUN node -e " \
 FROM node:$NODE_VERSION as deps
 WORKDIR /app
 COPY --from=prepare /app/package.json /app/yarn.lock ./
-RUN yarn install --frozen-lockfile
+#RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:$NODE_VERSION AS builder
@@ -29,13 +29,13 @@ ENV NEXT_PUBLIC_SITE_URL $NEXT_PUBLIC_SITE_URL
 
 ENV NODE_ENV production
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+#COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:7.3.0 AS runner
 
-COPY --from=builder /app/out /usr/share/nginx/html
+#COPY --from=builder /app/out /usr/share/nginx/html
 
 # Disable nextjs telemetry
 ENV NEXT_TELEMETRY_DISABLED 1
