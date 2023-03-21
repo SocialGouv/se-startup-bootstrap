@@ -1,4 +1,4 @@
-projectName: secretariat
+projectName: startup-bootstrap
 dependencies:
   fabrique:
     import: socialgouv/kontinuous/plugins/fabrique

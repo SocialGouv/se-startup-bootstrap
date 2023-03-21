@@ -21,7 +21,7 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            NEXT_PUBLIC_HASURA_URL=https://hasura-secretariat.fabrique.social.gouv.fr/v1/graphql
+            NEXT_PUBLIC_HASURA_URL=https://hasura-startup-bootstrap.fabrique.social.gouv.fr/v1/graphql
             NEXT_PUBLIC_MATOMO_SITE_ID=82
             NEXT_PUBLIC_MATOMO_URL=https://matomo.fabrique.social.gouv.fr/
 
@@ -38,7 +38,7 @@ jobs:
           dockercontext: ./packages/hasura
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            APP_URL=https://secretariat.fabrique.social.gouv.fr
+            APP_URL=https://startup-bootstrap.fabrique.social.gouv.fr
 
   kontinuous:
     name: "Deploy on Kubernetes 🐳"
