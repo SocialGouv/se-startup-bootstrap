@@ -1,0 +1,14 @@
+projectName: secretariat
+dependencies:
+  fabrique:
+    import: socialgouv/kontinuous/plugins/fabrique
+    options:
+      registry: ghcr.io
+    dependencies:
+      contrib:
+        preDeploy:
+          importSecrets:
+            options:
+              secrets:
+                pg-admin-user:
+                  enabled: false

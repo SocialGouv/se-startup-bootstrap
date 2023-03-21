@@ -1,0 +1,25 @@
+app:
+  envFrom:
+    - secretRef:
+        name: app
+  env:
+    - name: NEXTAUTH_URL
+      value: https://{{ .Values.global.host }}
+  probesPath: /healthz
+  imagePackage: app
+
+hasura:
+  ~needs: [pg]
+  envFrom:
+    - secretRef:
+        name: hasura
+    - secretRef:
+        name: pg-user
+    - configMapRef:
+        name: hasura-configmap
+
+pg:
+  ~chart: pg
+  # cnpg-cluster:
+  #   persistence:
+  #     size: 8Gi
