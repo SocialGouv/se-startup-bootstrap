@@ -10,15 +10,15 @@ app:
     enabled: true
     minReplicas: 2
 
-hasura:
-  resources:
-    requests:
-      cpu: 25m
-      memory: 512Mi
-    limits:
-      cpu: 50m
-      memory: 1024Mi
-  autoscale:
-    enabled: true
-    minReplicas: 2
+# hasura:
+#   resources:
+#     requests:
+#       cpu: 25m
+#       memory: 512Mi
+#     limits:
+#       cpu: 50m
+#       memory: 1024Mi
+#   autoscale:
+#     enabled: true
+#     minReplicas: 2
 

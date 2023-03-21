@@ -25,20 +25,20 @@ jobs:
             NEXT_PUBLIC_MATOMO_SITE_ID=82
             NEXT_PUBLIC_MATOMO_URL=https://matomo.fabrique.social.gouv.fr/
 
-  build-hasura:
-    name: Build & Register hasura
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use autodevops build and register
-        uses: socialgouv/workflows/actions/build-image@v1
-        with:
-          environment: prod
-          imagePackage: hasura
-          dockerfile: ./packages/hasura/Dockerfile
-          dockercontext: ./packages/hasura
-          token: ${{ secrets.GITHUB_TOKEN }}
-          dockerbuildargs: |
-            APP_URL=https://startup-bootstrap.fabrique.social.gouv.fr
+  # build-hasura:
+  #   name: Build & Register hasura
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Use autodevops build and register
+  #       uses: socialgouv/workflows/actions/build-image@v1
+  #       with:
+  #         environment: prod
+  #         imagePackage: hasura
+  #         dockerfile: ./packages/hasura/Dockerfile
+  #         dockercontext: ./packages/hasura
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         dockerbuildargs: |
+  #           APP_URL=https://startup-bootstrap.fabrique.social.gouv.fr
 
   kontinuous:
     name: "Deploy on Kubernetes 🐳"
