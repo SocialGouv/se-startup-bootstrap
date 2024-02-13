@@ -1,0 +1,7 @@
+projectName: startup-bootstrap
+ciNamespace: ci-startup-bootstrap
+
+dependencies:
+  fabrique:
+    extends:
+      - name: buildkit-service
