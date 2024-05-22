@@ -17,4 +17,5 @@ jobs:
     - name: login vault
       run: |
         TOKEN=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=startup-bootstrap")
-        vault login -address="https://vault-dev.factory.social.gouv.fr" -path=github-ci role=se-startup-bootstrap token=$TOKEN
+        export VAULT_ADDR="https://vault-dev.factory.social.gouv.fr"
+        vault write auth/github-ci/login role=se-startup-bootstrap jwt=$TOKEN
