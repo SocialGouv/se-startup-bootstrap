@@ -1,6 +1,6 @@
 on:
   workflow_dispatch:
-name: Hello World
+name: Vault token
 jobs:
   hello:
     runs-on: ubuntu-latest
