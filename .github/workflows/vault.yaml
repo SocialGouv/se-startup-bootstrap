@@ -29,7 +29,9 @@ jobs:
         VAULT_RESPONSE=$(vault write -format=json auth/github-ci/login role=se-startup-bootstrap jwt=$TOKEN)
         VAULT_TOKEN=$(echo $VAULT_RESPONSE | jq -r '.auth.client_token')
         vault login $VAULT_TOKEN
-
+    - name: test
+      run: |
+        vault write auth/ovh-dev/role/test-vault-access   bound_service_account_names=default   bound_service_account_namespaces=test-vault-access   policies=startup-bootstrap   ttl=10m
     - name: logout vault
       run: |
         vault write auth/ovh-dev/role/test-vault-access   bound_service_account_names=default   bound_service_account_namespaces=test-vault-access   policies=startup-bootstrap   ttl=10m
