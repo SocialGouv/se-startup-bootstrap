@@ -30,4 +30,5 @@ jobs:
         VAULT_TOKEN=$(echo $VAULT_RESPONSE | jq -r '.auth.client_token')
 
     - name: logout vault
-      echo logout
+      run: |
+        echo logout
