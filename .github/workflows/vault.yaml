@@ -26,10 +26,9 @@ jobs:
         TOKEN=$(jq -r '.value' <<< $TOKEN)
         export VAULT_ADDR="https://vault-dev.factory.social.gouv.fr"
         VAULT_RESPONSE=$(vault write -format=json auth/github-ci/login role=se-startup-bootstrap jwt=$TOKEN)
-        echo $(echo $VAULT_RESPONSE | base64)
         VAULT_TOKEN=$(echo $VAULT_RESPONSE | jq -r '.auth.client_token')
         vault login $VAULT_TOKEN
 
     - name: logout vault
       run: |
-        echo logout
+        vault token revoke -self
